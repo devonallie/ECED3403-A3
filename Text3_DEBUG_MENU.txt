@@ -1,0 +1,29 @@
+PURPOSE:
+The purpose of this test is the validate the systems ability to accept s-records
+and save them to memory. A debug menu is navigated though the keyboard. The 
+user can dump the contents of memory to verify proper loading.
+
+TEST CONFIGURATION :
+
+Option: l
+Enter .XME file to load
+SREC.txt
+Source filename: A2.asm
+File read - no errors detected. Starting address: 1000
+
+These options are entered by the user and the file "SREC.txt" is used for testing.
+
+EXPECTED RESULTS:
+
+Option: d 1000 1020
+1000: 00 6C 01 58 A1 45 50 24 89 40 FC 23 08 5C 00 .l.X.EP$.@.#.\.
+1010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ...............
+
+ACTUAL RESULTS:
+
+Option: d 1000 1020
+1000: 00 6C 01 58 A1 45 50 24 89 40 FC 23 08 5C 00 .l.X.EP$.@.#.\.
+1010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ...............
+
+The expected and actual results matched validating the functionality of the
+systems debug protocol.

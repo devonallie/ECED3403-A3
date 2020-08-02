@@ -1,0 +1,42 @@
+PURPOSE:
+The purpose of this test is to validate the use of multiple words to perform
+addition. The MOVLZ LDR ADD ADDC and STR instructions are all tested. 
+
+TEST CONFIGURATION:
+
+Option: l
+Enter .XME file to load
+MultiWord.xme
+Source filename: MultiWord.asm
+File read - no errors detected. Starting address: 1000
+Option: g
+Start: PC: 1000, PSW: 7F1E, Brkpt: 100E Clk: 0000
+End: PC: 100E, PSW: 7F1A, Brkpt: 100E Clk: 002F
+
+MOVLZ is called to set the LSB of R0 to 0xFF
+LDR is called to set R1 to the 0xFFFF and R2 to 0x0000
+ADD adds two to R1
+ADDC is called to add the carry from the previous addition to R2
+STR is called to store the result of R1 and R2
+
+EXPECTED RESULTS:
+R0: 0080
+R1: FF03
+R2: 0001
+R3: 0000
+R4: 0000
+R5: 0000
+R6: 0000
+R7: 100E
+
+ACTUAL RESULTS:
+R0: 0080
+R1: FF03
+R2: 0001
+R3: 0000
+R4: 0000
+R5: 0000
+R6: 0000
+R7: 100E
+
+The results matched the expected validating the test and the instrucitons.

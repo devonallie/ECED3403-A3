@@ -1,0 +1,44 @@
+PURPOSE:
+The purpose of this test is to validate the function of loading and storing
+with the LDR and STR instructions. This test also test word/byte functionality.
+
+TEST CONFIGURATION:
+The following input is given to the terminal after running the program
+
+Option: l
+Enter .XME file to load
+LDRSTR.xme
+Source filename: LDRSTR - A3.asm
+File read - no errors detected. Starting address: 2000
+Option: g
+Start: PC: 2000, PSW: 7FA7, Brkpt: 2010 Clk: 0000
+End: PC: 280E, PSW: 7FA7, Brkpt: 2010 Clk: 0031
+
+MOVH and MOVL are called to set R0 to 0x1000
+MOLVZ is called to set R1 to 0x00F0
+STR.B is called to store the LSB of R1 to memory location 1000
+MOVLS is called to SET R2 to 0xFF0F
+STR.B is called again, this time to set the LSB of R2 to 0xFF0F
+LDR.W is called to take the value at address 0x1000 and setting it to R3
+
+EXPECTED RESULTS:
+R0: 1000
+R1: 00F0
+R2: FF0F
+R3: 0FF0
+R4: 0000
+R5: 0000
+R6: 0000
+R7: 280E
+
+ACTUAL RESULTS:
+R0: 1000
+R1: 00F0
+R2: FF0F
+R3: 0FF0
+R4: 0000
+R5: 0000
+R6: 0000
+R7: 280E
+
+The results matched the expected validating the test and the instrucitons.
